@@ -1,25 +1,31 @@
-import {forwardRef} from 'react'
+import {AnchorHTMLAttributes, FC, forwardRef, ReactNode} from 'react'
 import Link from 'next/link'
 import clsx from 'clsx'
 import {motion, useScroll, useTransform} from 'framer-motion'
-
-import {Button} from '@/components/Button'
 import {Logo} from '@/components/Logo'
 import {MobileNavigation, useIsInsideMobileNavigation, useMobileNavigationStore,} from '@/components/MobileNavigation'
 import {MobileSearch, Search} from '@/components/Search'
 import {ThemeToggle} from '@/components/ThemeToggle'
+import {IconBrandGithub} from "@tabler/icons-react";
 
-function TopLevelNavItem({
-                             href,
-                             children,
-                         }: {
+interface TopLevelNavItemProps {
     href: string
-    children: React.ReactNode
-}) {
+    children: ReactNode,
+    target?: AnchorHTMLAttributes<any>["target"]
+}
+
+const TopLevelNavItem: FC<TopLevelNavItemProps> = (
+    {
+        href,
+        children,
+        target,
+    }
+) => {
     return (
         <li>
             <Link
                 href={href}
+                target={target}
                 className="text-sm leading-5 text-zinc-600 transition hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
             >
                 {children}
@@ -75,18 +81,18 @@ export const Header = forwardRef<
             <div className="flex items-center gap-5">
                 <nav className="hidden md:block">
                     <ul role="list" className="flex items-center gap-8">
-                        <TopLevelNavItem href="/">API</TopLevelNavItem>
-                        <TopLevelNavItem href="#">Documentation</TopLevelNavItem>
-                        <TopLevelNavItem href="#">Support</TopLevelNavItem>
+                        <TopLevelNavItem href="/">Documentation</TopLevelNavItem>
                     </ul>
                 </nav>
                 <div className="hidden md:block md:h-5 md:w-px md:bg-zinc-900/10 md:dark:bg-white/15"/>
                 <div className="flex gap-4">
                     <MobileSearch/>
                     <ThemeToggle/>
-                </div>
-                <div className="hidden min-[416px]:contents">
-                    <Button href="#">Sign in</Button>
+                    <ul role="list" className="flex items-center gap-8">
+                        <TopLevelNavItem href="https://github.com/ebalo55/rs2" target={"_blank"}>
+                            <IconBrandGithub size={20}/>
+                        </TopLevelNavItem>
+                    </ul>
                 </div>
             </div>
         </motion.div>

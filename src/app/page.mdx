@@ -3,38 +3,69 @@ import {Resources} from '@/components/Resources'
 import {HeroPattern} from '@/components/HeroPattern'
 
 export const metadata = {
-    title: 'API Documentation',
-    description:
-        'Learn everything there is to know about the Protocol API and integrate Protocol into your product.',
+    title: 'Introduction to RS2',
+    description: 'A brief introduction on what is RS2 and why it\'s been created.',
 }
 
 export const sections = [
+    {title: 'How to get started', id: 'how-to-get-started'},
     {title: 'Guides', id: 'guides'},
     {title: 'Resources', id: 'resources'},
 ]
 
 <HeroPattern/>
 
-# API Documentation
+# What is RS2?
 
-Use the Protocol API to access contacts, conversations, group messages, and more and seamlessly integrate your product into the workflows of dozens of devoted Protocol users. {{ className: 'lead' }}
+RS2 is a modern, highly-customizable, command and control framework for red teams. {{ className: 'lead' }}
+It has been designed to be powerful, and fully configurable, possibly loosing some points on simplicity due to the
+many moving parts. {{ className: 'lead' }}
+
+A common installation of this C2 is comprised by: {{ className: 'lead' }}
+- One or more `agent`(s) that will be deployed on the target machine. {{ className: 'lead' }}
+- A `server` responsible for the management of agents, connections, and tasks. {{ className: 'lead' }}
+- A `command-and-control-gui` that will be used by red team operators to interact with the server. {{ className: 'lead' }}
+
+All of these pieces may share some code via the usage of what we call `libs`, if you know Rust, you'll know them as
+crates. {{ className: 'lead' }}
 
 <div className="not-prose mb-16 mt-6 flex gap-3">
-    <Button href="/quickstart" arrow="right">
-        <>Quickstart</>
+    <Button href="/understanding-the-server" arrow="right">
+        <>Understanding the server</>
     </Button>
-    <Button href="/sdks" variant="outline">
-        <>Explore SDKs</>
+    <Button href="/agent" variant="outline">
+        <>Agent</>
+    </Button>
+    <Button href="/c2-gui" variant="outline">
+        <>Command and Control GUI</>
     </Button>
 </div>
 
-## Getting started {{ anchor: false }}
+## How to get started
 
-To get started, create a new application in your [developer settings](#), then read about how to make requests for the resources you need to access using our HTTP APIs or dedicated client SDKs. When your integration is ready to go live, publish it to our [integrations directory](#) to reach the Protocol community. {{ className: 'lead' }}
+We've voluntarily chosen not to provide any precompiled binary, this decision was taken because of a series of factors: {{ className: 'lead' }}
+- Creating precompiled binaries pollutes the release page with a large number of artifacts, as at least 3 artifacts
+(probably 4 as soon as we set up also the `*nix-agent`) must be built for each architecture it will result in an
+overall of more than 15 artifacts for each release, possibly with linked libraries. {{ className: 'lead' }}
+- Security of everyone, as we do not take any responsibility for the improper use of this project we don't want to
+inadvertently provide a powerful weapon to script kiddies, instead you must be able to set up your environment,
+test it and configure it to correctly use RS2 (this is the reason why this documentation exits). {{ className: 'lead' }}
+- Publishing precompiled agent binaries will result in: {{ className: 'lead' }}
+  - Improper use of the agent due to precompiled urls or callback methods. {{ className: 'lead' }}
+  - Av and EDR easily analise samples, maybe uncovering probably unwanted IOCs, probably resulting in all agents being
+flagged as malicious. {{ className: 'lead' }}
+  - The repository being flagged as malicious, none want this. {{ className: 'lead' }}
+- The unfortunate possibility to find yourself playing with backdoor-ed artifacts
+(if for some reason they get their way in the release page) resulting in a double compromise of your environment and
+your victim. You should generally never trust precompiled binaries, as there have been many cases of backdoor-ed
+artifacts, and try at most of your capability to compile from source whenever you can. {{ className: 'lead' }}
+
+So how can you get started? It's easy, clone the repository, follow the installation instructions and compile your
+own artifacts, starting from the `server` is the best idea as it has some, let's say _super-powers_. {{ className: 'lead' }}
 
 <div className="not-prose">
-    <Button href="/sdks" variant="text" arrow="right">
-        <>Get your API key</>
+    <Button href="/server" variant="text" arrow="right">
+        <>Server introduction</>
     </Button>
 </div>
 

@@ -6,15 +6,17 @@ import {usePathname} from 'next/navigation'
 import {Button} from '@/components/Button'
 import {navigation} from '@/components/Navigation'
 
-function PageLink({
-                      label,
-                      page,
-                      previous = false,
-                  }: {
-    label: string
-    page: { href: string; title: string }
-    previous?: boolean
-}) {
+function PageLink(
+    {
+        label,
+        page,
+        previous = false,
+    }: {
+        label: string
+        page: { href: string; title: string }
+        previous?: boolean
+    }
+) {
     return (
         <>
             <Button
@@ -109,7 +111,7 @@ function SocialLink({
     children: React.ReactNode
 }) {
     return (
-        <Link href={href} className="group">
+        <Link href={href} target={"_blank"} className="group">
             <span className="sr-only">{children}</span>
             <Icon
                 className="h-5 w-5 fill-zinc-700 transition group-hover:fill-zinc-900 dark:group-hover:fill-zinc-500"/>
@@ -128,7 +130,7 @@ function SmallPrint() {
                 <SocialLink href="#" icon={XIcon}>
                     Follow us on X
                 </SocialLink>
-                <SocialLink href="#" icon={GitHubIcon}>
+                <SocialLink href="https://github.com/ebalo55/rs2" icon={GitHubIcon}>
                     Follow us on GitHub
                 </SocialLink>
                 <SocialLink href="#" icon={DiscordIcon}>

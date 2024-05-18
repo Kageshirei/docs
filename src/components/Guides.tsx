@@ -3,26 +3,19 @@ import {Heading} from '@/components/Heading'
 
 const guides = [
     {
-        href: '/authentication',
-        name: 'Authentication',
-        description: 'Learn how to authenticate your API requests.',
+        href: '/understanding-the-server',
+        name: 'Understanding the server',
+        description: 'Get a complete overview of how the server works and what capabilities it have.',
     },
     {
-        href: '/pagination',
-        name: 'Pagination',
-        description: 'Understand how to work with paginated responses.',
+        href: '/agent-modules-and-compile-time-inclusion',
+        name: 'Modules and compile time inclusion within the agent',
+        description: 'Understand how to include features at compile time and the concept of modules within the agent.',
     },
     {
-        href: '/errors',
-        name: 'Errors',
-        description:
-            'Read about the different types of errors returned by the API.',
-    },
-    {
-        href: '/webhooks',
-        name: 'Webhooks',
-        description:
-            'Learn how to programmatically configure webhooks for your app.',
+        href: '/the-control-panel',
+        name: 'The control panel',
+        description: 'Get to know the main interface to RS2, the control panel and its features.',
     },
 ]
 
@@ -33,7 +26,7 @@ export function Guides() {
                 Guides
             </Heading>
             <div
-                className="not-prose mt-4 grid grid-cols-1 gap-8 border-t border-zinc-900/5 pt-10 sm:grid-cols-2 xl:grid-cols-4 dark:border-white/5">
+                className="not-prose mt-4 grid grid-cols-1 gap-8 border-t border-zinc-900/5 pt-10 sm:grid-cols-2 xl:grid-cols-3 dark:border-white/5">
                 {guides.map((guide) => (
                     <div key={guide.href}>
                         <h3 className="text-sm font-semibold text-zinc-900 dark:text-white">

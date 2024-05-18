@@ -10,13 +10,15 @@ import {Logo} from '@/components/Logo'
 import {Navigation} from '@/components/Navigation'
 import {type Section, SectionProvider} from '@/components/SectionProvider'
 
-export function Layout({
-                           children,
-                           allSections,
-                       }: {
-    children: React.ReactNode
-    allSections: Record<string, Array<Section>>
-}) {
+export function Layout(
+    {
+        children,
+        allSections,
+    }: {
+        children: React.ReactNode
+        allSections: Record<string, Array<Section>>
+    }
+) {
     let pathname = usePathname()
 
     return (
