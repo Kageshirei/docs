@@ -1,0 +1,91 @@
+export const metadata = {
+    title: 'Errors',
+    description:
+        'In this guide, we will talk about what happens when something goes wrong while you work with the API.',
+}
+
+# Server
+
+The server CLI is a powerful tool that allows you to interact with the server and its functionalities natively without
+the need for the GUI control panel. This guide will cover the most common commands and how to use them. {{ className: 'lead' }}
+
+---
+
+## Make operator {{ tag: 'CLI', label: 'make operator' }}
+
+<Row>
+    <Col>
+
+        Create a new operator user.
+
+        ### Positional arguments
+
+        <Properties>
+            <Property name="username" type="string">
+                The username of the new operator, must be unique.
+            </Property>
+            <Property name="password" type="string">
+                The plaintext password for the new operator.
+            </Property>
+        </Properties>
+
+    </Col>
+    <Col sticky>
+
+        ```bash {{title: "Command synopsis"}}
+        rs2-server make operator [username] [password]
+        ```
+
+        ```text {{title: "Operator created"}}
+        [INFO] [2024-05-19T06:25:24Z] Database migration;
+        [INFO] [2024-05-19T06:25:24Z] Running migrations
+        [INFO] [2024-05-19T06:25:24Z] Migrations completed successfully
+        [INFO] [2024-05-19T06:25:24Z] Created operator with id: 5b2fd311-ffac-49f7-b2f0-26b0002712fb
+        ```
+
+        ```text {{title: "Error"}}
+        [INFO] [2024-05-19T06:25:24Z] Database migration;
+        [INFO] [2024-05-19T06:25:24Z] Running migrations
+        [INFO] [2024-05-19T06:25:24Z] Migrations completed successfully
+        [INFO] [2024-05-19T06:25:24Z] Created operator with id: 5b2fd311-ffac-49f7-b2f0-26b0002712fb
+        ```
+
+    </Col>
+</Row>
+
+---
+
+## Error types
+
+<Row>
+    <Col>
+
+        Whenever a request is unsuccessful, the Protocol API will return an error response with an error type and
+        message. You can use this information to understand better what has gone wrong and how to fix it. Most of the
+        error messages are pretty helpful and actionable.
+
+        Here is a list of the two error types supported by the Protocol API — use these to understand what you have done
+        wrong.
+
+        <Properties>
+            <Property name="api_error">
+                This means that we made an error, which is highly speculative and unlikely.
+            </Property>
+            <Property name="invalid_request">
+                This means that you made an error, which is much more likely.
+            </Property>
+        </Properties>
+
+    </Col>
+    <Col>
+
+        ```bash {{title: "Error response"}}
+        {
+            "type": "api_error",
+            "message": "No way this is happening!?",
+            "documentation_url": "https://protocol.chat/docs/errors/api_error"
+        }
+        ```
+
+    </Col>
+</Row>

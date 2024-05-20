@@ -3,9 +3,9 @@ import {Heading} from '@/components/Heading'
 
 const guides = [
     {
-        href: '/understanding-the-server',
+        href: '/understanding-the-server-cli',
         name: 'Understanding the server',
-        description: 'Get a complete overview of how the server works and what capabilities it have.',
+        description: 'Get a complete overview of how the server-cli works and what capabilities it have.',
     },
     {
         href: '/agent-modules-and-compile-time-inclusion',

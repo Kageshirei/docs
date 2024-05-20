@@ -234,6 +234,10 @@ export const navigation: Array<NavGroup> = [
         title: 'Guides',
         links: [
             {title: 'Introduction', href: '/'},
+            {title: 'Understanding the server-cli', href: '/understanding-the-server-cli'},
+            {title: 'Server', href: '/server-cli'},
+            {title: 'Agent', href: '/agent'},
+            {title: 'Command & control GUI', href: '/c2-gui'},
             {title: 'Quickstart', href: '/quickstart'},
             {title: 'SDKs', href: '/sdks'},
             {title: 'Authentication', href: '/authentication'},
