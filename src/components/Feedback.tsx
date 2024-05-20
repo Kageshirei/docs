@@ -72,7 +72,7 @@ const FeedbackThanks = forwardRef<React.ElementRef<'div'>>(
 )
 
 export function Feedback() {
-    let [submitted, setSubmitted] = useState(false)
+    /*let [submitted, setSubmitted] = useState(false)
 
     function onSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault()
@@ -102,5 +102,7 @@ export function Feedback() {
                 <FeedbackThanks/>
             </Transition>
         </div>
-    )
+    )*/
+
+    return null
 }

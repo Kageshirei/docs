@@ -1,7 +1,6 @@
 export const metadata = {
-    title: 'Errors',
-    description:
-        'In this guide, we will talk about what happens when something goes wrong while you work with the API.',
+    title: 'Server CLI',
+    description: 'The server CLI is a powerful tool that allows you to interact with the server and its functionalities natively without the need for the GUI control panel. This guide will cover the most common commands and how to use them.',
 }
 
 # Server
@@ -29,11 +28,24 @@ the need for the GUI control panel. This guide will cover the most common comman
             </Property>
         </Properties>
 
+        ### Options
+
+        <Properties>
+            <Property name="-d, --debug" type=" ">
+                Increase the verbosity of the output.
+            </Property>
+            <Property name="-c, --config" type="string">
+                The path to the configuration file to use, relative to the current working directory.
+
+                Default value: `config.json`
+            </Property>
+        </Properties>
+
     </Col>
     <Col sticky>
 
         ```bash {{title: "Command synopsis"}}
-        rs2-server make operator [username] [password]
+        rs2-server make operator [options] [username] [password]
         ```
 
     </Col>
@@ -51,6 +63,55 @@ the need for the GUI control panel. This guide will cover the most common comman
 
         ```bash {{title: "Command synopsis"}}
         rs2-server make jwt
+        ```
+
+    </Col>
+</Row>
+
+---
+
+## Run {{ tag: 'CLI', label: 'run' }}
+
+<Row>
+    <Col>
+        Start the server daemon.
+
+        ### Options
+
+        <Properties>
+            <Property name="-d, --debug" type=" ">
+                Increase the verbosity of the output.
+            </Property>
+            <Property name="-c, --config" type="string">
+                The path to the configuration file to use, relative to the current working directory.
+
+                Default value: `config.json`
+            </Property>
+        </Properties>
+
+    </Col>
+    <Col sticky>
+
+        ```bash {{title: "Command synopsis"}}
+        rs2-server run [options]
+        ```
+
+    </Col>
+</Row>
+
+---
+
+
+## Compile control panel {{ tag: 'CLI', label: 'compile gui' }}
+
+<Row>
+    <Col>
+        Compile the control panel.
+    </Col>
+    <Col sticky>
+
+        ```bash {{title: "Command synopsis"}}
+        rs2-server compile gui
         ```
 
     </Col>
