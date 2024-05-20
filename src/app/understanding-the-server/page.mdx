@@ -41,6 +41,9 @@ highly configurable. {{ className: 'lead' }}
             <Property tag="Operator's API"
                       name="Http(s) server"
             >
+                <Warn>
+                    Still missing HTTPS support.
+                </Warn>
                 Http(s) server to serve the operator's API, with advanced request logging, onfile or to the console.
             </Property>
             <Property tag="Compilation"
@@ -63,7 +66,7 @@ highly configurable. {{ className: 'lead' }}
                       name="User management"
             >
                 <Note>
-                    Partially implemented via the command line, check out the [`make operator`]() command.
+                    Partially implemented via the command line, check out the [`make operator`](/server-cli#make-operator) command.
                 </Note>
                 User management system, with possibility to add operators and change the current operator's password.
             </Property>

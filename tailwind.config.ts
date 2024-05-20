@@ -41,6 +41,9 @@ export default {
                 7.5: '0.075',
                 15: '0.15',
             },
+            animation: {
+                "slow-spin": "spin 5s linear infinite",
+            }
         },
     },
     plugins: [typographyPlugin, headlessuiPlugin],

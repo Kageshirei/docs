@@ -1,0 +1,40 @@
+import Timeline from "@/components/timeline";
+import TimelineItem from "@/components/timeline/item";
+export const metadata = {
+    title:       'Development roadmap',
+    description: 'The development roadmap of RS2, the features that are planned and the ones that are already implemented.',
+}
+
+# Roadmap
+
+The development roadmap of RS2, the features that are planned and the ones that are already implemented. {{ className: 'lead' }}
+
+<Timeline>
+    <TimelineItem title="v1.0.0"
+    >
+        - Operators management API.
+        - Agents listing API.
+        - Http(s) API for agents remote control.
+        - Control panel authentication.
+        - Control panel agents listing.
+        - Control panel agents remote control.
+    </TimelineItem>
+    <TimelineItem title="Operators API authentication"
+                  time="May 2024"
+                  status="in-progress"
+    >
+        - Https API for operators to authenticate to the Control panel.
+    </TimelineItem>
+    <TimelineItem title="v0.1.0"
+                  time="May 2024"
+                  status="completed"
+    >
+
+        - Http Api for operators to authenticate to the Control panel.
+        - Compile the Control panel from source code with automatic dependency management
+          (aka [`compile gui`](/server-cli#compile-control-panel) command)
+        - [`make operator`](/server-cli#make-operator) command.
+        - [`make jwt`](/server-cli#make-jwt) command.
+
+    </TimelineItem>
+</Timeline>

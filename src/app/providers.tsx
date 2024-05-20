@@ -12,7 +12,8 @@ function ThemeWatcher() {
         function onMediaChange() {
             let systemTheme = media.matches ? 'dark' : 'light'
             if (resolvedTheme === systemTheme) {
-                setTheme('system')
+                // setTheme('system')
+                setTheme('dark')
             }
         }
 

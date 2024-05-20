@@ -87,7 +87,7 @@ export const Header = forwardRef<
                 <div className="hidden md:block md:h-5 md:w-px md:bg-zinc-900/10 md:dark:bg-white/15"/>
                 <div className="flex gap-4">
                     <MobileSearch/>
-                    <ThemeToggle/>
+                    {/*<ThemeToggle/>*/}
                     <ul role="list" className="flex items-center gap-8">
                         <TopLevelNavItem href="https://github.com/ebalo55/rs2" target={"_blank"}>
                             <IconBrandGithub size={20}/>
