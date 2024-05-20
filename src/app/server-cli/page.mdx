@@ -21,10 +21,10 @@ the need for the GUI control panel. This guide will cover the most common comman
         ### Positional arguments
 
         <Properties>
-            <Property name="username" type="string">
+            <Property name="username" type="string, required">
                 The username of the new operator, must be unique.
             </Property>
-            <Property name="password" type="string">
+            <Property name="password" type="string, required">
                 The plaintext password for the new operator.
             </Property>
         </Properties>
@@ -36,18 +36,21 @@ the need for the GUI control panel. This guide will cover the most common comman
         rs2-server make operator [username] [password]
         ```
 
-        ```text {{title: "Operator created"}}
-        [INFO] [2024-05-19T06:25:24Z] Database migration;
-        [INFO] [2024-05-19T06:25:24Z] Running migrations
-        [INFO] [2024-05-19T06:25:24Z] Migrations completed successfully
-        [INFO] [2024-05-19T06:25:24Z] Created operator with id: 5b2fd311-ffac-49f7-b2f0-26b0002712fb
-        ```
+    </Col>
+</Row>
 
-        ```text {{title: "Error"}}
-        [INFO] [2024-05-19T06:25:24Z] Database migration;
-        [INFO] [2024-05-19T06:25:24Z] Running migrations
-        [INFO] [2024-05-19T06:25:24Z] Migrations completed successfully
-        [INFO] [2024-05-19T06:25:24Z] Created operator with id: 5b2fd311-ffac-49f7-b2f0-26b0002712fb
+---
+
+## Make jwt {{ tag: 'CLI', label: 'make jwt' }}
+
+<Row>
+    <Col>
+        Generate a jwt key for the server to use for signing and verifying jwt tokens, the format is a 64 character string valid for HS512.
+    </Col>
+    <Col sticky>
+
+        ```bash {{title: "Command synopsis"}}
+        rs2-server make jwt
         ```
 
     </Col>
