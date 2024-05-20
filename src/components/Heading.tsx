@@ -23,7 +23,7 @@ function AnchorIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
     )
 }
 
-function Eyebrow({tag, label}: { tag?: string; label?: string }) {
+export function Eyebrow({tag, label}: { tag?: string; label?: string }) {
     if (!tag && !label) {
         return null
     }

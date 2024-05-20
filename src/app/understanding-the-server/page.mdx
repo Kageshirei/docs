@@ -1,6 +1,6 @@
-import {Col, Note, Warn} from "../../components/mdx";
+import { Col, Note, Warn } from "../../components/mdx";
 export const metadata = {
-    title: 'Understanding the server-cli',
+    title:       'Understanding the server-cli',
     description: 'The server-cli is one of the main interfaces of RS2, understanding its functionalities and its internals allows you to achieve the most from it.',
 }
 
@@ -33,13 +33,19 @@ highly configurable. {{ className: 'lead' }}
         ### Enabled features
 
         <Properties>
-            <Property name="Operator's API">
+            <Property tag="Operator's API"
+                      name="Login system"
+            >
                 Secure login system to the API powered by JWT; credentials are secured at rest via Argon2ID.
             </Property>
-            <Property name="Operator's API">
+            <Property tag="Operator's API"
+                      name="Http(s) server"
+            >
                 Http(s) server to serve the operator's API, with advanced request logging, onfile or to the console.
             </Property>
-            <Property name="Compilation">
+            <Property tag="Compilation"
+                      name="Command and control"
+            >
                 <Warn>
                     This feature is only available on Debian-based systems.
                 </Warn>
@@ -53,18 +59,23 @@ highly configurable. {{ className: 'lead' }}
         ### Planned features
 
         <Properties>
-            <Property name="Operator's API">
+            <Property tag="Operator's API"
+                      name="User management"
+            >
                 <Note>
                     Partially implemented via the command line, check out the [`make operator`]() command.
                 </Note>
                 User management system, with possibility to add operators and change the current operator's password.
             </Property>
-            <Property name="4xx">
-                A 4xx status code indicates a client error — this means it's a _you_
-                problem.
+            <Property tag="Operator's API"
+                      name="Agent listing"
+            >
+                List all the agents registered to the server, with the possibility to filter them by their status.
             </Property>
-            <Property name="5xx">
-                A 5xx status code indicates a server error — you won't be seeing these.
+            <Property tag="Agent control"
+                      name="Http(s) server"
+            >
+                Agent's dedicated HTTP(s) server to control the agents remotely.
             </Property>
         </Properties>
 
@@ -74,51 +85,192 @@ highly configurable. {{ className: 'lead' }}
         ### Ideas / Future features
 
         <Properties>
-            <Property name="2xx">
-                A 2xx status code indicates a successful response.
+            <Property tag="Operator's API"
+                      name="Configuration management"
+            >
+                Update server configuration via API.
             </Property>
-            <Property name="4xx">
-                A 4xx status code indicates a client error — this means it's a _you_
-                problem.
+            <Property tag="Operator's API"
+                      name="Configuration management"
+            >
+                Update server configuration via API.
             </Property>
-            <Property name="5xx">
-                A 5xx status code indicates a server error — you won't be seeing these.
+            <Property tag="Agent control"
+                      name="DNS server"
+            >
+                Agent's dedicated DNS server to control the agents remotely.
             </Property>
         </Properties>
 
     </Col>
 </Row>
+
 ---
 
-## Error types
+## Configuration
+
+The configuration of the server is done via a single file, the `config.json` file. {{ className: 'lead' }}
+This can be located anywhere on the server machine but by default it is loaded from the current working directory. {{ className: 'lead' }}
+
+A sample and always up-to-date configuration file can be found in the `server` folder of the repository named
+`sample-config.json`. {{ className: 'lead' }}
+
+The configuration file is composed of many sections, each one with its own purpose and functionalities. {{ className: 'lead' }}
+
+### Api server (`api_server`)
+
+The Api server section contains the configuration for the operator's API server. {{ className: 'lead' }}
 
 <Row>
     <Col>
-
-        Whenever a request is unsuccessful, the Protocol API will return an error response with an error type and
-        message. You can use this information to understand better what has gone wrong and how to fix it. Most of the
-        error messages are pretty helpful and actionable.
-
-        Here is a list of the two error types supported by the Protocol API — use these to understand what you have done
-        wrong.
-
         <Properties>
-            <Property name="api_error">
-                This means that we made an error, which is highly speculative and unlikely.
+            <Property name="port"
+                      type="int"
+            >
+                The port on which the server will listen for incoming connections.
             </Property>
-            <Property name="invalid_request">
-                This means that you made an error, which is much more likely.
+            <Property name="host"
+                      type="string"
+            >
+                The host interface on which the server will listen for incoming connections, set it to `0.0.0.0` to
+                listen on all interfaces.
             </Property>
         </Properties>
+    </Col>
+    <Col sticky>
+
+        ```json {{ title: "Sample configuration" }}
+        {
+            "api_server": {
+                "port": 3000,
+                "host": "127.0.0.1"
+            }
+        }
+        ```
 
     </Col>
-    <Col>
+</Row>
 
-        ```bash {{title: "Error response"}}
+---
+
+### Log (`log`)
+The log section contains the configuration for the server's logging system. {{ className: 'lead' }}
+
+<Row>
+    <Col>
+        <Properties>
+            <Property name="file"
+                      type="object"
+            >
+                The file logging configuration.
+            </Property>
+            <Property name="file.enabled"
+                      type="bool"
+            >
+                Enable or disable the file logging.
+            </Property>
+            <Property name="file.path"
+                      type="string"
+            >
+                The path to the log file.
+            </Property>
+            <Property name="console"
+                      type="object"
+            >
+                The console logging configuration.
+            </Property>
+            <Property name="console.enabled"
+                      type="bool"
+            >
+                Enable or disable the console logging.
+            </Property>
+            <Property name="console.format"
+                      type="enum"
+            >
+                The format of the log message. One of `pretty`, `full`, `compact`, `json`.
+            </Property>
+        </Properties>
+    </Col>
+    <Col sticky>
+
+        ```json {{ title: "Sample configuration" }}
         {
-            "type": "api_error",
-            "message": "No way this is happening!?",
-            "documentation_url": "https://protocol.chat/docs/errors/api_error"
+            "log":         {
+                "file":    {
+                    "enabled": false,
+                    "path":    "./target/logs/server.log"
+                },
+                "console": {
+                    "enabled": true,
+                    "format":  "compact"
+                }
+            },
+        }
+        ```
+
+    </Col>
+</Row>
+
+---
+
+### JWT (`jwt`)
+The JWT section contains the configuration for the server's JWT system. {{ className: 'lead' }}
+
+<Row>
+    <Col>
+        <Properties>
+            <Property name="secret"
+                      type="string"
+            >
+                The secret key used to sign the JWT tokens.
+            </Property>
+        </Properties>
+    </Col>
+    <Col sticky>
+
+        ```json {{ title: "Sample configuration" }}
+        {
+            "jwt": {
+                "secret": "TlwDBT0AKR+eRhG0s8nWCWZqggT3/ZNyFXZsOJBISH4u+t6Vs9wof7nAGzerhRmtm51u02rQ4yd3uIRDLxvwzw=="
+            },
+        }
+        ```
+
+    </Col>
+</Row>
+
+---
+
+### Database (`database`)
+The database section contains the configuration for the server's database connection. {{ className: 'lead' }}
+
+<Row>
+    <Col>
+        <Properties>
+            <Property name="url"
+                      type="string"
+            >
+                The URL of the database. Refer to
+                [the official postgres docs](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING-URIS)
+                for more information about its format.
+            </Property>
+            <Property name="pool_size"
+                      type="int"
+            >
+                The size of the database connection pool.
+                Larger values will allow more connections to be open at the same time reducing the latency.
+                Lower values will reduce the memory usage.
+            </Property>
+        </Properties>
+    </Col>
+    <Col sticky>
+
+        ```json {{ title: "Sample configuration" }}
+        {
+            "database":   {
+                "url":       "postgresql://rs2:rs2@localhost/rs2",
+                "pool_size": 10
+            }
         }
         ```
 
