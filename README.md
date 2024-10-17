@@ -1,6 +1,6 @@
-# RS2 Docs
+# KageShirei Docs
 
-Official documentation for RS2 command and control.
+Official documentation for KageShirei command and control.
 
 ## Getting started
 

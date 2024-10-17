@@ -238,23 +238,33 @@ export const navigation: Array<NavGroup> = [
             {title: 'Agent', href: '/agent'},
             {title: 'Command & control GUI', href: '/c2-gui'},
             {title: 'Roadmap', href: '/roadmap'},
-            // {title: 'Quickstart', href: '/quickstart'},
-            // {title: 'SDKs', href: '/sdks'},
-            // {title: 'Authentication', href: '/authentication'},
-            // {title: 'Pagination', href: '/pagination'},
-            // {title: 'Errors', href: '/errors'},
-            // {title: 'Webhooks', href: '/webhooks'},
+        ],
+    },
+    {
+        title: 'Libraries',
+        links: [
+            {title: 'Introduction', href: '/libraries'},
+            {title: 'Communication protocol', href: '/libraries/communication-protocol'},
+        ],
+    },
+    {
+        title: 'Modules',
+        links: [
+            {title: 'Introduction', href: '/modules'},
         ],
     },
     {
         title: 'Resources',
         links: [
             {title: 'Server CLI', href: '/server-cli'},
-            // {title: 'Contacts', href: '/contacts'},
-            // {title: 'Conversations', href: '/conversations'},
-            // {title: 'Messages', href: '/messages'},
-            // {title: 'Groups', href: '/groups'},
-            // {title: 'Attachments', href: '/attachments'},
+        ],
+    },
+    {
+        title: 'Templates',
+        links: [
+            {title: 'Quickstart', href: '/quickstart'},
+            {title: 'SDKs', href: '/sdks'},
+            {title: 'Webhooks', href: '/webhooks'},
         ],
     },
 ]

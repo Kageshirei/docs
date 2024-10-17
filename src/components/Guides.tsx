@@ -15,7 +15,7 @@ const guides = [
     {
         href: '/the-control-panel',
         name: 'The control panel',
-        description: 'Get to know the main interface to RS2, the control panel and its features.',
+        description: 'Get to know the main interface to KageShirei, the control panel and its features.',
     },
 ]
 

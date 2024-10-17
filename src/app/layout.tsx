@@ -10,7 +10,7 @@ import '@/styles/tailwind.css'
 export const metadata: Metadata = {
     title: {
         template: '%s - Documentation',
-        default: 'RS2 documentation',
+        default: 'KageShirei documentation',
     },
 }
 
