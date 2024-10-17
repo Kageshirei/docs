@@ -38,7 +38,7 @@ jobs:
       - name: install pnpm
         run: npm i -g pnpm
       - name: Install dependencies
-        run: pnpm i --fronzen-lockfile
+        run: pnpm i --frozen-lockfile
       - name: Build with Next.js
         run: pnpm run next build
       - name: Upload artifact
